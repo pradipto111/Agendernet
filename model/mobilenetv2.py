@@ -7,13 +7,14 @@ from keras import applications
 
 
 
-class AgenderNetMobileNetV2(Model):
+class AgenderNetMobileNetV2(Model, weight_path):
     """Classification model based on MobileNetV2 with 2 outputs, each for age and gender
     """
 
     def __init__(self):
         self.input_size = 96
-        base = tf.keras.applications.MobileNetV2(input_shape=(96, 96, 3), include_top=False, weights=os.path.dirname(os.path.abspath(__file__))+'/weight/mobilenet_v2_weights_tf_dim_ordering_tf_kernels_1.0_96_no_top.h5')
+        #base = tf.keras.applications.MobileNetV2(input_shape=(96, 96, 3), include_top=False, weights=os.path.dirname(os.path.abspath(__file__))+'/weight/mobilenet_v2_weights_tf_dim_ordering_tf_kernels_1.0_96_no_top.h5')
+        base = tf.keras.applications.MobileNetV2(input_shape=(96, 96, 3), include_top=False, weights=weights_path)
         top_layer = GlobalAveragePooling2D()(base.output)
         gender_layer = Dense(2, activation='softmax', name='gender_prediction')(top_layer)
         age_layer = Dense(101, activation='softmax', name='age_prediction')(top_layer)
