@@ -1,10 +1,10 @@
 import numpy as np
 import os
 import tensorflow as tf
-from tf.keras.models import Model
-from tf.keras.layers import Dense, GlobalAveragePooling2D
-from tf.keras.applications.mobilenetv2 import MobileNetV2
-from tf.keras.utils import plot_model
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
+from tensorflow.keras.applications.mobilenetv2 import MobileNetV2
+from tensorflow.keras.utils import plot_model
 
 
 class AgenderNetMobileNetV2(Model):
