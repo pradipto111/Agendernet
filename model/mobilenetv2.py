@@ -3,7 +3,7 @@ import os
 from keras.models import Model
 from keras.layers import Dense, GlobalAveragePooling2D
 from keras import applications
-from keras.utils import plot_model
+
 
 
 class AgenderNetMobileNetV2(Model):
