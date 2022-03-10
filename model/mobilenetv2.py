@@ -1,10 +1,9 @@
 import numpy as np
 import os
-import tensorflow as tf
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
-from tensorflow.keras.applications.mobilenetv2 import MobileNetV2
-from tensorflow.keras.utils import plot_model
+from keras.models import Model
+from keras.layers import Dense, GlobalAveragePooling2D
+from keras import applications
+from keras.utils import plot_model
 
 
 class AgenderNetMobileNetV2(Model):
@@ -13,7 +12,7 @@ class AgenderNetMobileNetV2(Model):
 
     def __init__(self):
         self.input_size = 96
-        base = MobileNetV2(input_shape=(96, 96, 3), include_top=False, weights=os.path.dirname(os.path.abspath(__file__))+'/weight/mobilenet_v2_weights_tf_dim_ordering_tf_kernels_1.0_96_no_top.h5')
+        base = applications.MobileNetV2(input_shape=(96, 96, 3), include_top=False, weights=os.path.dirname(os.path.abspath(__file__))+'/weight/mobilenet_v2_weights_tf_dim_ordering_tf_kernels_1.0_96_no_top.h5')
         top_layer = GlobalAveragePooling2D()(base.output)
         gender_layer = Dense(2, activation='softmax', name='gender_prediction')(top_layer)
         age_layer = Dense(101, activation='softmax', name='age_prediction')(top_layer)
