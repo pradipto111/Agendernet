@@ -1,9 +1,9 @@
 import numpy as np
 import os
-from keras.models import Model
-from keras.layers import Dense, GlobalAveragePooling2D
-from keras.applications.mobilenetv2 import MobileNetV2
-from keras.utils import plot_model
+from tf.keras.models import Model
+from tf.keras.layers import Dense, GlobalAveragePooling2D
+from tf.keras.applications.mobilenetv2 import MobileNetV2
+from tf.keras.utils import plot_model
 
 
 class AgenderNetMobileNetV2(Model):
